@@ -1,0 +1,95 @@
+/*
+Created by :- Mayur Pokharkar
+Created on :- 2021-02-07 11:44:50
+*/
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+#define ld long double
+#define sout(x) cout << #x << " is : " << x << '\n';
+#define pqmax priority_queue<ll>
+#define pqmin priority_queue<ll, vt<ll>, greater<ll>>
+#define setbits(x) __builtin_popcountll(x)
+#define ps(x, y) fixed << setprecision(y) << x
+#define EACH(x, a) for (auto x : a)
+#define FOR(var, start, size) for (ll var = start; var < size; var++)
+#define tc()  \
+    int t;    \
+    cin >> t; \
+    while (t--)
+const ll modo = 1e9 + 7;
+const ll INF = 1e17;
+const char nl = '\n';
+const ll ms = 1e5 + 5;
+void cp()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+}
+
+ll solve(vector<char> v, vector<char> w)
+{
+    set<char> s(v.begin(), v.end());
+    ll temp = 0;
+    for (auto x : w)
+    {
+        if (s.find(x) != s.end())
+            temp++;
+    }
+    return temp;
+}
+
+int main()
+{
+    clock_t begin = clock();
+    cp();
+    tc()
+    {
+        string s;
+        ll n, ans = 0;
+        cin >> n;
+        unordered_map<string, vector<char>> mp;
+        // Take the first character
+        FOR(i, 0, n)
+        {
+            cin >> s;
+            if (s.length() > 0)
+            {
+                mp[s.substr(1)].push_back(s[0]);
+            }
+        }
+        EACH(i, mp)
+        {
+            EACH(j, mp)
+            {
+                if (i.first != j.first)
+                {
+                    ll temp = solve(i.second, j.second);
+                    ans += ((i.second.size() - temp) * (j.second.size() - temp));
+                }
+            }
+        }
+        cout << ans << nl;
+    }
+
+#ifndef ONLINE_JUDGE
+    clock_t end = clock();
+    cout << "\n\nExecuted In : " << double(end - begin) / CLOCKS_PER_SEC * 1000 << " ms";
+#endif
+    return 0;
+}
+/*
+
+1.suf mas
+    suf --> sas
+    mas --> maf
+    ans --> (sas,maf) & (maf, sas)
+2.hell bell best test
+    hell --> hell hest hest
+    bell --> bell best best
+    best --> bell bell best
+    test --> tell tell test
+    ans --> (hest,tell) & (tell,hest)
+*/
