@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long int
+#define ld long double
+#define sout(x) cout << #x << " is : " << x << '\n';
+#define pqmax priority_queue<ll>
+#define pqmin priority_queue<ll, vt<ll>, greater<ll>>
+#define setbits(x) __builtin_popcountll(x)
+#define ps(x, y) fixed << setprecision(y) << x
+#define EACH(x, a) for (auto &x : a)
+#define FOR(var, start, size) for (ll var = start; var < size; var++)
+#define tc()  \
+    int t;    \
+    cin >> t; \
+    while (t--)
+const ll modo = 1e9 + 7;
+const ll INF = 1e17;
+const char nl = '\n';
+const ll ms = 1e5 + 5;
+void cp()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+}
+
+int main()
+{
+    clock_t begin = clock();
+
+    int n;
+    cin >> n;
+    int ans = INT_MIN;
+    for (int i = 1; i <= 10; i++)
+        if (n % i == 0)
+            ans = max(ans, i);
+    cout << ans;
+
+#ifndef ONLINE_JUDGE
+    clock_t end = clock();
+    cout << "\n\nExecuted In : " << double(end - begin) / CLOCKS_PER_SEC * 1000 << " ms";
+#endif
+    return 0;
+}
