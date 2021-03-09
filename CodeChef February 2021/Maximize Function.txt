@@ -9,13 +9,14 @@ using namespace std;
 #define setbits(x) __builtin_popcountll(x)
 #define ps(x, y) fixed << setprecision(y) << x
 #define EACH(x, a) for (auto &x : a)
-#define FOR(var, start, end) for (int var = start; var <= end; var++)
+#define FOR(var, start, size) for (ll var = start; var < size; var++)
 #define tc()  \
     int t;    \
     cin >> t; \
     while (t--)
 const ll modo = 1e9 + 7;
 const ll INF = 1e17;
+const char nl = '\n';
 const ll ms = 1e5 + 5;
 void cp()
 {
@@ -24,70 +25,20 @@ void cp()
     cout.tie(0);
 }
 
-int getIndex(vector<int> v, int K)
-{
-    auto it = find(v.begin(), v.end(), K);
-    if (it != v.end())
-    {
-        int index = it - v.begin();
-        return index;
-    }
-    else
-    {
-        return -1;
-    }
-}
 int main()
 {
     clock_t begin = clock();
-
     cp();
     tc()
     {
-        ll n, count = 0;
+        ll n;
         cin >> n;
-
-        vector<int> a;
-        for (int i = 0; i < n; i++)
-        {
-            int x;
-            cin >> x;
-            a.push_back(x);
-        }
-
-        vector<int> pos(n);
-        FOR(i, 0, n - 1)
-        {
-            pos[i] = i;
-        }
-
-        vector<int> l;
-        for (int i = 0; i < n; i++)
-        {
-            int x;
-            cin >> x;
-            l.push_back(x);
-        }
-
-        vector<int> b(n);
-        FOR(i, 0, n - 1)
-        b[i] = a[i];
-        sort(b.begin(), b.end());
-
-        FOR(j, 1, n - 1)
-        {
-            int index = getIndex(a, b[j]);
-            int p = pos[getIndex(a, b[j - 1])];
-            int c = index;
-
-            while (c <= p)
-            {
-                c += l[index];
-                pos[index] = c;
-                count++;
-            }
-        }
-        cout << count << endl;
+        ll V[n];
+        FOR(i, 0, n)
+        cin >> V[i];
+        sort(V, V + n);
+        ll ans = abs(V[0] - V[n - 1]) + abs(V[n - 1] - V[1]) + abs(V[0] - V[1]);
+        cout << ans << nl;
     }
 
 #ifndef ONLINE_JUDGE
