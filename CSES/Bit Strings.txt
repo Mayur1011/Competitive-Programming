@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long in
+const ll mod = 1e9 + 7;
+const char nl = '\n';
+
+void cp()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+}
+ll modular_Exponentiation_bitmasking(ll base, ll expo)
+{
+    // Time complexity --> O(log expo) and Space complexity --> O(1)
+    ll res = 1;
+    while (expo)
+    {
+        if (expo & 1)
+            res = (res * base) % mod;
+        base = (base * base) % mod;
+        expo = expo >> 1;
+    }
+    return res;
+}
+ 
+int main()
+{
+    cp();
+    int y;
+    cin >> y;
+    cout << modular_Exponentiation_bitmasking(2, y) << nl;
+    return 0;
+}
