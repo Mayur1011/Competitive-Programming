@@ -1,0 +1,37 @@
+/*
+Created by :- Mayur Pokharkar
+Created on :- 2021-03-13 11:17:29
+*/
+#include <bits/stdc++.h>
+using namespace std;
+const char nl = '\n';
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int64_t n;
+    cin >> n;
+    if (n == 1)
+        cout << 1 << nl;
+    else if (n < 4)
+        cout << "NO SOLUTION" << nl;
+    else if (n == 4)
+        cout << "3 1 4 2" << nl;
+    else
+    {
+        for (int i = 2; i <= n; i += 2)
+        {
+            cout << i << " ";
+        }
+        for (int i = 1; i <= n; i += 2)
+        {
+            cout << i << " ";
+        }
+        cout << nl;
+    }
+
+#ifndef ONLINE_JUDGE
+    cout << "Time elapsed : " << 1.0 * clock() / CLOCKS_PER_SEC << " s.\n";
+#endif
+    return 0;
+}
