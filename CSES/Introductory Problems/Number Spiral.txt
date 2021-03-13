@@ -1,0 +1,44 @@
+/*
+Created by :- Mayur Pokharkar
+Created on :- 2021-03-13 11:28:44
+*/
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+const char nl = '\n';
+int main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    ll testcases;
+    cin >> testcases;
+    while (testcases--){
+        ll x, y;
+        cin >> x >> y;
+        if (x == 1 and y == 1) cout << 1 << nl;
+        else{
+            if (x < y){
+                if (y % 2 == 1){
+                    ll r = y * y;
+                    cout << r - x + 1 << nl;
+                }else{
+                    ll r = (y - 1) * (y - 1) + 1;
+                    cout << r + x - 1 << nl;
+                }
+            }else{
+                if (x % 2 == 0){
+                    ll r = x * x;
+                    cout << r - y + 1 << nl;
+                }else{
+                    ll r = (x - 1) * (x - 1) + 1;
+                    cout << r + y - 1 << nl;
+                }
+            }
+        }
+    }
+
+#ifndef ONLINE_JUDGE
+    cout << "Time elapsed : " << 1.0 * clock() / CLOCKS_PER_SEC << " s.\n";
+#endif
+    return 0;
+}
